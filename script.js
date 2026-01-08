@@ -5,4 +5,17 @@ for (let i = 0; i < 256; i++) {
     div.classList.add("square");
     grid.appendChild(div);
 }
-
+//Add eventListener to the grid
+const squares = document.querySelectorAll(".square");
+squares.forEach(square => {
+    square.addEventListener("mouseenter", () => {
+        square.style.backgroundColor = getRandomColor();
+    });
+});
+//Helper function to get a Random color
+function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+}

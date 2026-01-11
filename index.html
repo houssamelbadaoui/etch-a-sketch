@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etch-a-Sketch</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+  <body>
+    <div class="app">
+      <h1 class="title">Etch-a-Sketch</h1>
+      <div class="main">
+        <!--LEFT: control-->
+        <div class="control">
+          <h2>Color Mode</h2>
+          <button id="randomColor">Random</button>
+          <button id="singleColor">Single Color</button>
+          <input type="color" id="colorpicker" value="#000000" />
 
-<body>
-    <button id="reset">Reset Grid</button>
-    <div id="container">
+          <h2>Interaction</h2>
+          <button id="hoverMode">Hover</button>
+          <button id="clickMode">Click</button>
 
+          <h2>Actions</h2>
+          <button id="clear">Clear</button>
+          <button id="reset">Reset Grid</button>
+        </div>
+        <!--RIGHT: Grid-->
+        <div class="grid-wrapper">
+          <div id="container"></div>
+        </div>
+      </div>
     </div>
     <!--link script.js-->
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>

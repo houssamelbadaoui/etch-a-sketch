@@ -4,9 +4,12 @@ const clearButton = document.querySelector("#clear");
 const randomBtn = document.querySelector("#random");
 const singleBtn = document.querySelector("#single");
 const colorPicker = document.querySelector("#colorPicker");
+const hoverBtn = document.querySelector("#hover");
+const clickBtn = document.querySelector("#click");
 
 let gridSize = 16;
 let colorMode = "random"; // "random" | "single"
+let interactionMode = "hover";
 
 /* ---------- Helper ---------- */
 function getRandomColor() {
@@ -32,6 +35,22 @@ function createGrid(size) {
     square.style.backgroundColor = "black";
 
     square.addEventListener("mouseenter", () => {
+      if (interactionMode !== "hover") return;
+      let currentOpacity = Number(square.dataset.opacity);
+      if (currentOpacity < 1) {
+        currentOpacity += 0.1;
+        square.dataset.opacity = currentOpacity;
+        square.style.opacity = currentOpacity;
+      }
+
+      if (colorMode === "random") {
+        square.style.backgroundColor = getRandomColor();
+      } else {
+        square.style.backgroundColor = colorPicker.value;
+      }
+    });
+    square.addEventListener("click", () => {
+      if (interactionMode !== "click") return;
       let currentOpacity = Number(square.dataset.opacity);
       if (currentOpacity < 1) {
         currentOpacity += 0.1;
@@ -95,3 +114,11 @@ singleBtn.addEventListener("click", () => {
 
 /* ---------- Initial Load ---------- */
 createGrid(gridSize);
+
+// Add logic to hover and click buttons
+hoverBtn.addEventListener("click", () => {
+  interactionMode = "hover";
+});
+clickBtn.addEventListener("click", () => {
+  interactionMode = "click";
+});
